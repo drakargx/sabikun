@@ -7,6 +7,4 @@ edition = "2021"
 wana_kana = "4.0.0"
 rusqlite = { version = "0.32.1", features = ["bundled"] }
 zip = "2.2.0"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
 isolang = "2.4.0"
