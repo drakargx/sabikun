@@ -1,0 +1,121 @@
+[
+    [
+        "ヽ",
+        "ヽ",
+        "",
+        "",
+        0, 
+        [
+            {
+                "type": "structured-content",
+                "content": [
+                    {
+                        "tag": "div", 
+                        "content": [
+                            {
+                                "tag": "span", 
+                                "title": "unclassified", 
+                                "style": {
+                                    "fontSize": "0.8em", 
+                                    "fontWeight": "bold", 
+                                    "padding": "0.2em 0.3em", 
+                                    "wordBreak": "keep-all", 
+                                    "borderRadius": "0.3em", 
+                                    "verticalAlign": "text-bottom", 
+                                    "backgroundColor": "#565656", 
+                                    "color": "white", 
+                                    "cursor": "help", 
+                                    "marginRight": "0.25em"
+                                },
+                                "data": {"code": "unc"}, 
+                                "content": "unclass"
+                            }, 
+                            {
+                                "tag": "div", 
+                                "content": [
+                                    {
+                                        "tag": "ul", 
+                                        "style": {"listStyleType": "none", "paddingLeft": "0"}, 
+                                        "data": {"content": "glossary"}, 
+                                        "content": {"tag": "li", "content": "repetition mark in katakana"}
+                                    }, 
+                                    {
+                                        "tag": "div", 
+                                        "style": {"marginLeft": "0.5em"}, 
+                                        "data": {"content": "extra-info"}, 
+                                        "content": {
+                                            "tag": "div", 
+                                            "content": {
+                                                "tag": "div", 
+                                                "style": {
+                                                    "borderStyle": "none none none solid", 
+                                                    "padding": "0.5rem", "borderRadius": "0.4rem", 
+                                                    "marginTop": "0.5rem", 
+                                                    "marginBottom": "0.5rem", 
+                                                    "borderColor": "#4a91ed", 
+                                                    "backgroundColor": "color-mix(in srgb, #4a91ed 5%, transparent)"
+                                                },
+                                                "data": {"content": "xref"}, 
+                                                "content": [
+                                                    {
+                                                        "tag": "div", 
+                                                        "style": {"fontSize": "1.3em"}, 
+                                                        "content": [
+                                                            {
+                                                                "tag": "span", 
+                                                                "lang": "en", 
+                                                                "style": {"fontSize": "0.8em", "marginRight": "0.5rem"}, "content": "See:"
+                                                            },
+                                                            {
+                                                                "tag": "a",
+                                                                "lang": "ja",
+                                                                "href": "?query=一の字点&wildcards=off",
+                                                                "content": [
+                                                                    {
+                                                                        "tag": "ruby",
+                                                                        "content": ["一", {"tag": "rt", "content": "いち"}]
+                                                                    },
+                                                                    "の",
+                                                                    {
+                                                                        "tag": "ruby", 
+                                                                        "content": ["字", {"tag": "rt", "content": "じ"}]
+                                                                    },
+                                                                    {
+                                                                        "tag": "ruby", 
+                                                                        "content": ["点", {"tag": "rt", "content": "てん"}]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tag": "div", 
+                                                        "style": {"fontSize": "0.8rem"}, 
+                                                        "data": {"content": "xref-glossary"}, 
+                                                        "content": "kana iteration mark"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tag": "div", 
+                        "style": {"fontSize": "0.7em", "textAlign": "right"}, 
+                        "data": {"content": "attribution"}, 
+                        "content": {
+                            "tag": "a", 
+                            "href": "https://www.edrdg.org/jmwsgi/entr.py?svc=jmdict&q=1000000", 
+                            "content": "JMdict"
+                        }
+                    }
+                ]
+            }
+        ], 
+        1000000, 
+        ""
+    ]
+]
