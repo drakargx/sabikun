@@ -1,8 +1,9 @@
+//TODO until this is done, cant load pitch accents
 #![cfg(target_os = "windows")]
 
-use std::fmt::Debug;
-use serde::{de::Error, Serialize, Deserialize, Deserializer};
+use serde::{de::Error, Deserialize, Deserializer, Serialize};
 use serde_json;
+use std::fmt::Debug;
 
 //need to manually check FrequencyTerm, PitchTerm and TermPhoneticTranscriptions
 //for if they contain a string "freq", "pitch", and "ipa" respectively
@@ -15,8 +16,8 @@ enum TermFrequency {
     DisplayNumber {
         value: i32,
         #[serde(rename = "displayValue")]
-        display_value: String
-    }
+        display_value: String,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,7 +27,7 @@ enum ReadingFrequency {
     ReadFrequency {
         reading: String,
         frequency: TermFrequency,
-    }
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,11 +40,11 @@ struct PitchAccentInfo {
     nasal: Option<Vec<i32>>,
     #[serde(deserialize_with = "from_number")]
     devoice: Option<Vec<i32>>,
-    tags: Option<Vec<String>>
+    tags: Option<Vec<String>>,
 }
 
 fn from_number<'de, D>(deserializer: D) -> Result<Vec<i32>, D::Error>
-where D: Deserializer<'de>,
+where
+    D: Deserializer<'de>,
 {
-
 }

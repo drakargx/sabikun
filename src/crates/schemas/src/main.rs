@@ -1,14 +1,8 @@
-mod dictionary_index_schema;
-mod iso_languages;
-mod kanji_bank_schema;
-mod tag_bank_schema;
-mod term_bank_schema;
-
-use dictionary_index_schema::DictionaryIndex;
-use kanji_bank_schema::DictionaryKanjiBankV3;
-use kanji_bank_schema::KanjiInformation;
-use tag_bank_schema::DictionaryTagBankV3;
-use term_bank_schema::DictionaryTermBankV3;
+use schemas::DictionaryIndex;
+use schemas::DictionaryKanjiBankV3;
+use schemas::DictionaryTagBankV3;
+use schemas::DictionaryTermBankV3;
+use schemas::KanjiInformation;
 use serde::Deserialize;
 use std::error::Error;
 use std::fs::File;
@@ -44,13 +38,13 @@ use std::io::BufReader;
 //             //let serialized = serde_json::to_string(&result.unwrap()).unwrap();
 //             //println!("{}", serialized);
 //             println!("Ok");
-//         }, 
+//         },
 //         Err(err) => {
 //             let path = err.path().to_string();
 //             println!("Fail {:#?}", path);
 //         }
 //     }
-    
+
 //     Ok(())
 // }
 
@@ -67,19 +61,20 @@ use std::io::BufReader;
 //             let serialized = serde_json::to_string(&result.unwrap()).unwrap();
 //             println!("{}", serialized);
 //             //println!("Ok");
-//         }, 
+//         },
 //         Err(err) => {
 //             let path = err.path().to_string();
 //             println!("Fail {:#?}", path);
 //         }
 //     }
-    
+
 //     Ok(())
 // }
 
 //term bank..
 fn main() -> std::io::Result<()> {
-    let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
+    //let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
+    let path = "C:\\code\\yomidb\\testzip\\term_bank_1.json";
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let jd = &mut serde_json::Deserializer::from_reader(reader);
@@ -90,12 +85,12 @@ fn main() -> std::io::Result<()> {
             let serialized = serde_json::to_string(&result.unwrap()).unwrap();
             println!("{}", serialized);
             //println!("Ok");
-        }, 
+        }
         Err(err) => {
             let path = err.path().to_string();
             println!("Fail {:#?}", path);
         }
     }
-    
+
     Ok(())
 }

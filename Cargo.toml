@@ -5,6 +5,24 @@ edition = "2021"
 
 [dependencies]
 wana_kana = "4.0.0"
-rusqlite = { version = "0.32.1", features = ["bundled"] }
-zip = "2.2.0"
 isolang = "2.4.0"
+
+[workspace]
+members = ["src/crates/schemas", "src/crates/gui", "src/crates/yomi_dict_db"]
+
+[workspace.dependencies]
+schemas = { path = "src/crates/schemas" }
+gui = { path = "src/crates/gui" }
+yomi_dict_db = { path = "src/crates/yomi_dict_db" }
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
