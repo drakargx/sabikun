@@ -1,2 +1,2 @@
-mod hero;
-pub use hero::Hero;
+mod structured_content;
+pub use structured_content::StructuredContent;

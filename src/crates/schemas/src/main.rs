@@ -73,8 +73,8 @@ use std::io::BufReader;
 
 //term bank..
 fn main() -> std::io::Result<()> {
-    //let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
-    let path = "C:\\code\\yomidb\\testzip\\term_bank_1.json";
+    let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
+    //let path = "C:\\code\\yomidb\\testzip\\term_bank_1.json";
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let jd = &mut serde_json::Deserializer::from_reader(reader);

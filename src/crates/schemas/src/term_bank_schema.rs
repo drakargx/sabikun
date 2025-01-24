@@ -5,155 +5,238 @@ use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 use std::collections::HashMap;
 use std::fmt;
+use std::str::FromStr;
+use strum::Display;
+use strum::EnumString;
 
 pub type StructuredContentData = HashMap<String, String>;
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+//TODO: consider including strum_macros and then deriving strum_macros::Display
+//that way no need for seperate impl blocks for every enum that also needs a string
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum FontStyle {
+    //#[strum(to_string = "normal")]
     Normal,
+    //#[strum(to_string = "italic")]
     Italic,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum FontWeight {
+    //#[strum(to_string = "normal")]
     Normal,
+    //#[strum(to_string = "bold")]
     Bold,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum TextDecorationLine {
+    //#[strum(to_string = "none")]
     None,
+    //#[strum(to_string = "underline")]
     Underline,
+    //#[strum(to_string = "overline")]
     Overline,
+    //#[strum(to_string = "line-through")]
     LineThrough,
     #[serde(untagged)]
     TextDecorationArray(Vec<TextDecorationLine>),
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum TextDecorationStyle {
+    //#[strum(to_string = "solid")]
     Solid,
+    //#[strum(to_string = "double")]
     Double,
+    //#[strum(to_string = "dotted")]
     Dotted,
+    //#[strum(to_string = "dashed")]
     Dashed,
+    //#[strum(to_string = "wavy")]
     Wavy,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum VerticalAlign {
+    //#[strum(to_string = "baseline")]
     Baseline,
+    //#[strum(to_string = "sub")]
     Sub,
+    //#[strum(to_string = "super")]
     Super,
+    //#[strum(to_string = "text-top")]
     TextTop,
+    //#[strum(to_string = "text-bottom")]
     TextBottom,
+    //#[strum(to_string = "middle")]
     Middle,
+    //#[strum(to_string = "top")]
     Top,
+    //#[strum(to_string = "bottom")]
     Bottom,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum TextAlign {
+    //#[strum(to_string = "start")]
     Start,
+    //#[strum(to_string = "end")]
     End,
+    //#[strum(to_string = "left")]
     Left,
+    //#[strum(to_string = "right")]
     Right,
+    //#[strum(to_string = "center")]
     Center,
+    //#[strum(to_string = "justify")]
     Justify,
+    //#[strum(to_string = "justify-all")]
     JustifyAll,
+    //#[strum(to_string = "match-parent")]
     MatchParent,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum WordBreak {
+    //#[strum(to_string = "normal")]
     Normal,
+    //#[strum(to_string = "break-all")]
     BreakAll,
+    //#[strum(to_string = "keep-all")]
     KeepAll,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum ImageRendering {
+    //#[strum(to_string = "auto")]
     Auto,
+    //#[strum(to_string = "pixelated")]
     Pixelated,
+    //#[strum(to_string = "crisp-edges")]
     CrispEdges,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum ImageAppearance {
+    //#[strum(to_string = "auto")]
     Auto,
+    //#[strum(to_string = "monochrome")]
     Monochrome,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
+#[strum(serialize_all = "kebab-case")]
 pub enum SizeUnit {
+    //#[strum(to_string = "px")]
     Px,
+    //#[strum(to_string = "em")]
     Em,
 }
 
 #[skip_serializing_none]
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Default)]
 #[serde(rename_all = "camelCase")]
 pub struct StructuredContentStyle {
-    font_style: Option<FontStyle>,
-    font_weight: Option<FontWeight>,
-    font_size: Option<String>,
-    color: Option<String>,
-    background: Option<String>,
-    background_color: Option<String>,
-    text_decoration_line: Option<TextDecorationLine>,
-    text_decoration_style: Option<TextDecorationStyle>,
-    text_decoration_color: Option<String>,
-    border_color: Option<String>,
-    border_style: Option<String>,
-    border_radius: Option<String>,
-    border_width: Option<String>,
-    clip_path: Option<String>,
-    vertical_align: Option<VerticalAlign>,
-    text_align: Option<TextAlign>,
-    text_emphasis: Option<String>,
-    text_shadow: Option<String>,
-    margin: Option<String>,
-    margin_top: Option<String>,
-    margin_left: Option<String>,
-    margin_right: Option<String>,
-    margin_bottom: Option<String>,
-    padding: Option<String>,
-    padding_top: Option<String>,
-    padding_left: Option<String>,
-    padding_right: Option<String>,
-    padding_bottom: Option<String>,
-    word_break: Option<WordBreak>,
-    white_space: Option<String>,
-    cursor: Option<String>,
-    list_style_type: Option<String>,
+    pub font_style: Option<FontStyle>,
+    pub font_weight: Option<FontWeight>,
+    pub font_size: Option<String>,
+    pub color: Option<String>,
+    pub background: Option<String>,
+    pub background_color: Option<String>,
+    pub text_decoration_line: Option<TextDecorationLine>,
+    pub text_decoration_style: Option<TextDecorationStyle>,
+    pub text_decoration_color: Option<String>,
+    pub border_color: Option<String>,
+    pub border_style: Option<String>,
+    pub border_radius: Option<String>,
+    pub border_width: Option<String>,
+    pub clip_path: Option<String>,
+    pub vertical_align: Option<VerticalAlign>,
+    pub text_align: Option<TextAlign>,
+    pub text_emphasis: Option<String>,
+    pub text_shadow: Option<String>,
+    pub margin: Option<String>,
+    pub margin_top: Option<String>,
+    pub margin_left: Option<String>,
+    pub margin_right: Option<String>,
+    pub margin_bottom: Option<String>,
+    pub padding: Option<String>,
+    pub padding_top: Option<String>,
+    pub padding_left: Option<String>,
+    pub padding_right: Option<String>,
+    pub padding_bottom: Option<String>,
+    pub word_break: Option<WordBreak>,
+    pub white_space: Option<String>,
+    pub cursor: Option<String>,
+    pub list_style_type: Option<String>,
+}
+
+//TODO each type of element should have its own tag enum?
+//that way can generate errors in unlikely event new tags are added/tags moved to be unstyled
+
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum LineBreakElementTag {
+    Br,
 }
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct LineBreakElement {
-    tag: String,
+    tag: LineBreakElementTag,
     data: Option<StructuredContentData>,
+}
+
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum UnstyledElementTag {
+    Ruby,
+    Rt,
+    Rp,
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
 }
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct UnstyledElement {
-    pub tag: String,
+    pub tag: UnstyledElementTag,
     pub content: Option<StructuredContentNode>,
     pub data: Option<StructuredContentData>,
     pub lang: Option<String>,
 }
 
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum TableElementTag {
+    Td,
+    Th,
+}
+
 #[derive(Debug, PartialEq, Clone)]
 pub struct TableElement {
-    tag: String,
+    tag: TableElementTag,
     content: Option<StructuredContentNode>,
     data: Option<StructuredContentData>,
     col_span: Option<i32>,
@@ -162,19 +245,37 @@ pub struct TableElement {
     lang: Option<String>,
 }
 
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum StyledElementTag {
+    Span,
+    Div,
+    Ol,
+    Ul,
+    Li,
+    Details,
+    Summary,
+}
+
 #[derive(Debug, PartialEq, Clone)]
 pub struct StyledElement {
-    tag: String,
-    content: Option<StructuredContentNode>,
-    data: Option<StructuredContentData>,
-    style: Option<StructuredContentStyle>,
-    title: Option<String>,
-    lang: Option<String>,
+    pub tag: StyledElementTag,
+    pub content: Option<StructuredContentNode>,
+    pub data: Option<StructuredContentData>,
+    pub style: Option<StructuredContentStyle>,
+    pub title: Option<String>,
+    pub lang: Option<String>,
+}
+
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum ImageElementTag {
+    Img,
 }
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct ImageElement {
-    tag: String,
+    tag: ImageElementTag,
     data: Option<StructuredContentData>,
     path: String,
     width: Option<i32>,
@@ -194,12 +295,22 @@ pub struct ImageElement {
     size_units: Option<SizeUnit>,
 }
 
+#[derive(Debug, PartialEq, Clone, Display, EnumString)]
+#[strum(ascii_case_insensitive, serialize_all = "lowercase")]
+pub enum LinkElementTag {
+    A,
+}
+
 #[derive(Debug, PartialEq, Clone)]
 pub struct LinkElement {
-    tag: String,
+    tag: LinkElementTag,
     content: Option<StructuredContentNode>,
     href: String,
     lang: Option<String>,
+}
+
+pub trait Tagged {
+    fn tag(&self) -> String;
 }
 
 #[derive(Debug, PartialEq, Clone)]
@@ -210,6 +321,19 @@ pub enum TagElement {
     Styled(StyledElement),
     Image(ImageElement),
     Link(LinkElement),
+}
+
+impl Tagged for TagElement {
+    fn tag(&self) -> String {
+        match *self {
+            TagElement::LineBreak(ref elem) => elem.tag.to_string(),
+            TagElement::Unstyled(ref elem) => elem.tag.to_string(),
+            TagElement::Table(ref elem) => elem.tag.to_string(),
+            TagElement::Styled(ref elem) => elem.tag.to_string(),
+            TagElement::Image(ref elem) => elem.tag.to_string(),
+            TagElement::Link(ref elem) => elem.tag.to_string(),
+        }
+    }
 }
 
 //TODO: think long and hard about TagVariant
@@ -271,7 +395,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         serialize_opt!(elem.data, "data", map);
         map.end()
     }
@@ -280,7 +403,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         serialize_opt!(elem.data, "data", map);
         serialize_opt!(elem.lang, "lang", map);
         serialize_opt!(elem.content, "content", map);
@@ -291,7 +413,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         serialize_opt!(elem.data, "data", map);
         serialize_opt!(elem.col_span, "colSpan", map);
         serialize_opt!(elem.row_span, "rowSpan", map);
@@ -305,7 +426,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         serialize_opt!(elem.data, "data", map);
         serialize_opt!(elem.style, "style", map);
         serialize_opt!(elem.title, "title", map);
@@ -318,7 +438,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         map.serialize_entry("path", &elem.path)?;
 
         serialize_opt!(elem.data, "data", map);
@@ -345,7 +464,6 @@ where
     where
         A: SerializeMap,
     {
-        map.serialize_entry("tag", &elem.tag)?;
         map.serialize_entry("href", &elem.href)?;
 
         serialize_opt!(elem.lang, "lang", map);
@@ -353,7 +471,8 @@ where
         map.end()
     }
 
-    let map = serializer.serialize_map(None)?;
+    let mut map = serializer.serialize_map(None)?;
+    map.serialize_entry("tag", node.tag().as_str())?;
     match **node {
         TagElement::LineBreak(ref elem) => serialize_line_break(elem, map),
         TagElement::Unstyled(ref elem) => serialize_unstyled(elem, map),
@@ -416,7 +535,7 @@ fn deserialize_node_variant<'de, A>(mut access: A) -> Result<TagElement, A::Erro
 where
     A: MapAccess<'de>,
 {
-    fn deserialize_empty_tag<'de, A>(mut access: A, tag: String) -> Result<TagElement, A::Error>
+    fn deserialize_empty_tag<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -434,13 +553,13 @@ where
             }
         }
 
-        Ok(TagElement::LineBreak(LineBreakElement { tag, data }))
+        Ok(TagElement::LineBreak(LineBreakElement { 
+            tag: LineBreakElementTag::from_str(tag).unwrap(),
+            data
+        }))
     }
 
-    fn deserialize_generic_container<'de, A>(
-        mut access: A,
-        tag: String,
-    ) -> Result<TagElement, A::Error>
+    fn deserialize_generic_container<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -466,14 +585,14 @@ where
         }
 
         Ok(TagElement::Unstyled(UnstyledElement {
-            tag,
+            tag: UnstyledElementTag::from_str(tag).unwrap(),
             content,
             data,
             lang,
         }))
     }
 
-    fn deserialize_table<'de, A>(mut access: A, tag: String) -> Result<TagElement, A::Error>
+    fn deserialize_table<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -512,7 +631,7 @@ where
         }
 
         Ok(TagElement::Table(TableElement {
-            tag,
+            tag: TableElementTag::from_str(tag).unwrap(),
             content,
             data,
             col_span,
@@ -522,10 +641,7 @@ where
         }))
     }
 
-    fn deserialize_style_container<'de, A>(
-        mut access: A,
-        tag: String,
-    ) -> Result<TagElement, A::Error>
+    fn deserialize_style_container<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -560,7 +676,7 @@ where
         }
 
         Ok(TagElement::Styled(StyledElement {
-            tag,
+            tag: StyledElementTag::from_str(tag).unwrap(),
             content,
             data,
             style,
@@ -569,7 +685,7 @@ where
         }))
     }
 
-    fn deserialize_image<'de, A>(mut access: A, tag: String) -> Result<TagElement, A::Error>
+    fn deserialize_image<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -657,7 +773,7 @@ where
         } else {
             let path = path_opt.unwrap();
             Ok(TagElement::Image(ImageElement {
-                tag,
+                tag: ImageElementTag::from_str(tag).unwrap(),
                 data,
                 path,
                 width,
@@ -679,7 +795,7 @@ where
         }
     }
 
-    fn deserialize_link<'de, A>(mut access: A, tag: String) -> Result<TagElement, A::Error>
+    fn deserialize_link<'de, A>(mut access: A, tag: &str) -> Result<TagElement, A::Error>
     where
         A: MapAccess<'de>,
     {
@@ -711,7 +827,7 @@ where
         } else {
             let href = href_opt.unwrap();
             Ok(TagElement::Link(LinkElement {
-                tag,
+                tag: LinkElementTag::from_str(tag).unwrap(),
                 content,
                 href,
                 lang,
@@ -730,16 +846,16 @@ where
     let value = binding.as_ref();
 
     match value {
-        "br" => deserialize_empty_tag(access, value.to_string()),
+        "br" => deserialize_empty_tag(access, value),
         "ruby" | "rt" | "rp" | "table" | "thead" | "tbody" | "tfoot" | "tr" => {
-            deserialize_generic_container(access, value.to_string())
+            deserialize_generic_container(access, value)
         }
-        "td" | "th" => deserialize_table(access, binding),
+        "td" | "th" => deserialize_table(access, value),
         "span" | "div" | "ol" | "ul" | "li" | "details" | "summary" => {
-            deserialize_style_container(access, binding)
+            deserialize_style_container(access, value)
         }
-        "img" => deserialize_image(access, binding),
-        "a" => deserialize_link(access, binding),
+        "img" => deserialize_image(access, value),
+        "a" => deserialize_link(access, value),
         _ => Err(<A::Error as Error>::unknown_variant(value, TYPE_FIELDS)),
     }
 }
