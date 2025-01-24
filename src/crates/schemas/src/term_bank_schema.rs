@@ -11,15 +11,11 @@ use strum::EnumString;
 
 pub type StructuredContentData = HashMap<String, String>;
 
-//TODO: consider including strum_macros and then deriving strum_macros::Display
-//that way no need for seperate impl blocks for every enum that also needs a string
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Display, EnumString)]
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum FontStyle {
-    //#[strum(to_string = "normal")]
     Normal,
-    //#[strum(to_string = "italic")]
     Italic,
 }
 
@@ -27,9 +23,7 @@ pub enum FontStyle {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum FontWeight {
-    //#[strum(to_string = "normal")]
     Normal,
-    //#[strum(to_string = "bold")]
     Bold,
 }
 
@@ -37,13 +31,9 @@ pub enum FontWeight {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum TextDecorationLine {
-    //#[strum(to_string = "none")]
     None,
-    //#[strum(to_string = "underline")]
     Underline,
-    //#[strum(to_string = "overline")]
     Overline,
-    //#[strum(to_string = "line-through")]
     LineThrough,
     #[serde(untagged)]
     TextDecorationArray(Vec<TextDecorationLine>),
@@ -53,15 +43,10 @@ pub enum TextDecorationLine {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum TextDecorationStyle {
-    //#[strum(to_string = "solid")]
     Solid,
-    //#[strum(to_string = "double")]
     Double,
-    //#[strum(to_string = "dotted")]
     Dotted,
-    //#[strum(to_string = "dashed")]
     Dashed,
-    //#[strum(to_string = "wavy")]
     Wavy,
 }
 
@@ -69,21 +54,13 @@ pub enum TextDecorationStyle {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum VerticalAlign {
-    //#[strum(to_string = "baseline")]
     Baseline,
-    //#[strum(to_string = "sub")]
     Sub,
-    //#[strum(to_string = "super")]
     Super,
-    //#[strum(to_string = "text-top")]
     TextTop,
-    //#[strum(to_string = "text-bottom")]
     TextBottom,
-    //#[strum(to_string = "middle")]
     Middle,
-    //#[strum(to_string = "top")]
     Top,
-    //#[strum(to_string = "bottom")]
     Bottom,
 }
 
@@ -91,21 +68,13 @@ pub enum VerticalAlign {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum TextAlign {
-    //#[strum(to_string = "start")]
     Start,
-    //#[strum(to_string = "end")]
     End,
-    //#[strum(to_string = "left")]
     Left,
-    //#[strum(to_string = "right")]
     Right,
-    //#[strum(to_string = "center")]
     Center,
-    //#[strum(to_string = "justify")]
     Justify,
-    //#[strum(to_string = "justify-all")]
     JustifyAll,
-    //#[strum(to_string = "match-parent")]
     MatchParent,
 }
 
@@ -113,11 +82,8 @@ pub enum TextAlign {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum WordBreak {
-    //#[strum(to_string = "normal")]
     Normal,
-    //#[strum(to_string = "break-all")]
     BreakAll,
-    //#[strum(to_string = "keep-all")]
     KeepAll,
 }
 
@@ -125,11 +91,8 @@ pub enum WordBreak {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum ImageRendering {
-    //#[strum(to_string = "auto")]
     Auto,
-    //#[strum(to_string = "pixelated")]
     Pixelated,
-    //#[strum(to_string = "crisp-edges")]
     CrispEdges,
 }
 
@@ -137,9 +100,7 @@ pub enum ImageRendering {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum ImageAppearance {
-    //#[strum(to_string = "auto")]
     Auto,
-    //#[strum(to_string = "monochrome")]
     Monochrome,
 }
 
@@ -147,9 +108,7 @@ pub enum ImageAppearance {
 #[serde(rename_all = "kebab-case")]
 #[strum(serialize_all = "kebab-case")]
 pub enum SizeUnit {
-    //#[strum(to_string = "px")]
     Px,
-    //#[strum(to_string = "em")]
     Em,
 }
 
