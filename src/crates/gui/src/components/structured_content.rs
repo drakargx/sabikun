@@ -94,7 +94,8 @@ fn sc_styled(elem: &StyledElement) -> Element {
                     }
                 }
             }
-        }
+        },
+        
     }
     
 }

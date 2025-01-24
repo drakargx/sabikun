@@ -325,7 +325,7 @@ impl Serialize for StructuredContentNode {
     {
         match *self {
             StructuredContentNode::Text(ref s) => serializer.serialize_str(s),
-            StructuredContentNode::Variant(ref elem) => serialize_node_variant(elem, serializer),
+            StructuredContentNode::Variant(ref elem) => serialize_node_variant(elem.as_ref(), serializer),
             StructuredContentNode::ChildContent(ref v) => {
                 let mut seq = serializer.serialize_seq(None)?;
                 for children in v.iter() {
@@ -337,7 +337,7 @@ impl Serialize for StructuredContentNode {
     }
 }
 
-fn serialize_node_variant<A>(node: &Box<TagElement>, serializer: A) -> Result<A::Ok, A::Error>
+fn serialize_node_variant<A>(node: &TagElement, serializer: A) -> Result<A::Ok, A::Error>
 where
     A: Serializer,
 {
@@ -432,7 +432,7 @@ where
 
     let mut map = serializer.serialize_map(None)?;
     map.serialize_entry("tag", node.tag().as_str())?;
-    match **node {
+    match node {
         TagElement::LineBreak(ref elem) => serialize_line_break(elem, map),
         TagElement::Unstyled(ref elem) => serialize_unstyled(elem, map),
         TagElement::Table(ref elem) => serialize_table(elem, map),
@@ -866,26 +866,26 @@ impl Serialize for TermDefinition {
         match *self {
             TermDefinition::Simple(ref s) => {
                 let seq = serializer.serialize_str(s.as_ref());
-                return seq;
+                seq
             }
             TermDefinition::Detailed(ref dd) => match dd {
                 DetailedDefinition::Text(s) => {
                     let mut seq = serializer.serialize_map(None)?;
                     seq.serialize_entry("type", "text")?;
                     seq.serialize_entry("text", s)?;
-                    return seq.end();
+                    seq.end()
                 }
                 DetailedDefinition::Image(img) => {
                     let mut seq = serializer.serialize_map(None)?;
                     seq.serialize_entry("type", "image")?;
                     seq.serialize_entry("image", img)?;
-                    return seq.end();
+                    seq.end()
                 }
                 DetailedDefinition::StructuredContent(sc) => {
                     let mut seq = serializer.serialize_map(None)?;
                     seq.serialize_entry("type", "structured-content")?;
                     seq.serialize_entry("content", sc)?;
-                    return seq.end();
+                    seq.end()
                 }
             },
             TermDefinition::Inflection(ref inflect) => {
@@ -895,7 +895,7 @@ impl Serialize for TermDefinition {
                     "inflection_rules",
                     &inflect.inflection_rules,
                 )?;
-                return seq.end();
+                seq.end()
             }
         }
     }
@@ -1004,7 +1004,7 @@ where
         return Err(<A::Error as Error>::missing_field("content"));
     }
 
-    Ok(access.next_value::<StructuredContentNode>()?)
+    access.next_value::<StructuredContentNode>()
 }
 
 //for a definition, it can be one of the following:
