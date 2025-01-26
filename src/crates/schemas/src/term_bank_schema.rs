@@ -8,6 +8,8 @@ use std::fmt;
 use std::str::FromStr;
 use strum::Display;
 use strum::EnumString;
+use strum;
+use strum_macros;
 
 pub type StructuredContentData = HashMap<String, String>;
 
@@ -161,8 +163,8 @@ pub enum LineBreakElementTag {
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct LineBreakElement {
-    tag: LineBreakElementTag,
-    data: Option<StructuredContentData>,
+    pub tag: LineBreakElementTag,
+    pub data: Option<StructuredContentData>,
 }
 
 #[derive(Debug, PartialEq, Clone, Display, EnumString)]
@@ -195,13 +197,13 @@ pub enum TableElementTag {
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct TableElement {
-    tag: TableElementTag,
-    content: Option<StructuredContentNode>,
-    data: Option<StructuredContentData>,
-    col_span: Option<i32>,
-    row_span: Option<i32>,
-    style: Option<StructuredContentStyle>,
-    lang: Option<String>,
+    pub tag: TableElementTag,
+    pub content: Option<StructuredContentNode>,
+    pub data: Option<StructuredContentData>,
+    pub col_span: Option<i32>,
+    pub row_span: Option<i32>,
+    pub style: Option<StructuredContentStyle>,
+    pub lang: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Clone, Display, EnumString)]
@@ -234,24 +236,24 @@ pub enum ImageElementTag {
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct ImageElement {
-    tag: ImageElementTag,
-    data: Option<StructuredContentData>,
-    path: String,
-    width: Option<i32>,
-    height: Option<i32>,
-    title: Option<String>,
-    alt: Option<String>,
-    description: Option<String>,
-    pixelated: Option<bool>,
-    image: Option<ImageRendering>,
-    appearance: Option<ImageAppearance>,
-    background: Option<bool>,
-    collapsed: Option<bool>,
-    collapsible: Option<bool>,
-    vertical_align: Option<VerticalAlign>,
-    border: Option<String>,
-    border_radius: Option<String>,
-    size_units: Option<SizeUnit>,
+    pub tag: ImageElementTag,
+    pub data: Option<StructuredContentData>,
+    pub path: String,
+    pub width: Option<i32>,
+    pub height: Option<i32>,
+    pub title: Option<String>,
+    pub alt: Option<String>,
+    pub description: Option<String>,
+    pub pixelated: Option<bool>,
+    pub image: Option<ImageRendering>,
+    pub appearance: Option<ImageAppearance>,
+    pub background: Option<bool>,
+    pub collapsed: Option<bool>,
+    pub collapsible: Option<bool>,
+    pub vertical_align: Option<VerticalAlign>,
+    pub border: Option<String>,
+    pub border_radius: Option<String>,
+    pub size_units: Option<SizeUnit>,
 }
 
 #[derive(Debug, PartialEq, Clone, Display, EnumString)]
@@ -262,10 +264,10 @@ pub enum LinkElementTag {
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct LinkElement {
-    tag: LinkElementTag,
-    content: Option<StructuredContentNode>,
-    href: String,
-    lang: Option<String>,
+    pub tag: LinkElementTag,
+    pub content: Option<StructuredContentNode>,
+    pub href: String,
+    pub lang: Option<String>,
 }
 
 pub trait Tagged {
@@ -1017,14 +1019,14 @@ where
 // and all of these are wrapped in an array
 #[derive(Debug)]
 pub struct TermInformation {
-    term: String,
-    reading: String,
-    definition_tags: Option<String>,
-    deinflectors: String,
-    popularity: i32,
-    definitions: Vec<TermDefinition>,
-    sequence_number: i32,
-    term_tags: String,
+    pub term: String,
+    pub reading: String,
+    pub definition_tags: Option<String>,
+    pub deinflectors: String,
+    pub popularity: i32,
+    pub definitions: Vec<TermDefinition>,
+    pub sequence_number: i32,
+    pub term_tags: String,
 }
 
 #[derive(Serialize, Deserialize)]
