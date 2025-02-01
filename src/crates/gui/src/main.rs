@@ -1,6 +1,6 @@
 use std::{fs::File, io::BufReader};
 
-use components::{sc_styled, StructuredContent};
+use components::StructuredContent;
 //use components::Hero;
 use dioxus::prelude::*;
 use dioxus_elements::{data, datalist};
