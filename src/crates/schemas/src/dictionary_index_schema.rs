@@ -17,7 +17,7 @@ pub enum FrequencyMode {
     RankBased
 }
 
-#[derive(Serialize_repr, Deserialize_repr, Debug)]
+#[derive(Serialize_repr, Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Format {
     #[serde(rename = "1")]
@@ -31,16 +31,16 @@ pub enum Format {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct DictionaryIndex {
-    title: String,
-    revision: String,
-    sequenced: Option<bool>,
-    format: Option<Format>,
-    author: Option<String>,
-    is_updatable: Option<bool>,
-    index_url: Option<String>,
-    download_url: Option<String>,
-    url: Option<String>,
-    description: Option<String>,
-    attribution: Option<String>,
-    source_language: Option<IsoLanguageCode>,
+    pub title: String,
+    pub revision: String,
+    pub sequenced: Option<bool>,
+    pub format: Option<Format>,
+    pub author: Option<String>,
+    pub is_updatable: Option<bool>,
+    pub index_url: Option<String>,
+    pub download_url: Option<String>,
+    pub url: Option<String>,
+    pub description: Option<String>,
+    pub attribution: Option<String>,
+    pub source_language: Option<IsoLanguageCode>,
 }

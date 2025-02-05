@@ -8,6 +8,7 @@ name = "yomi_dict_db"
 path = "src/yomi_dict_db.rs"
 
 [dependencies]
-rusqlite = { version = "0.33.0", features = ["bundled"] }
+chrono = "0.4.39"
+rusqlite = { version = "0.33.0", features = ["bundled", "chrono"] }
 zip = "2.2.2"
 schemas.workspace = true

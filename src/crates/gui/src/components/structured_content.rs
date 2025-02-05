@@ -41,7 +41,7 @@ macro_rules! push_attribute {
 }
 
 fn style_into_vec(style: StructuredContentStyle) -> Vec<Attribute> {
-    let mut attributes: Vec<Attribute> = vec![];
+    let mut attributes: Vec<Attribute> = Vec::with_capacity(27);
     let namespace = Some("style");
 
     push_attribute!("font-style", namespace, &style.font_style, attributes);
