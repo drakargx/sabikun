@@ -4,7 +4,10 @@ use components::StructuredContent;
 //use components::Hero;
 use dioxus::prelude::*;
 use dioxus_elements::{data, datalist};
-use schemas::{DetailedDefinition, DictionaryTermBankV3, StructuredContentNode, StructuredContentStyle, StyledElement, TagElement, TermDefinition};
+use schemas::{
+    DetailedDefinition, DictionaryTermBankV3, StructuredContentNode, StructuredContentStyle,
+    StyledElement, TagElement, TermDefinition,
+};
 use serde::Deserialize;
 mod components;
 
@@ -17,7 +20,8 @@ fn main() {
 
 #[component]
 fn App() -> Element {
-    let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
+    //let path = "C:\\code\\yomidb\\testzip\\single_term_bank_1.json";
+    let path = "/home/drags/code/yomidb/testzip/single_term_bank_1.json";
     //let path = "C:\\code\\yomidb\\testzip\\term_bank_1.json";
     let file = File::open(path)?;
     let reader = BufReader::new(file);
@@ -27,16 +31,14 @@ fn App() -> Element {
         Ok(ref some) => {
             let term = &some[0];
             match &term.definitions[0] {
-                TermDefinition::Detailed(detailed) => {
-                    match detailed {
-                        DetailedDefinition::StructuredContent(node) => {
-                            println!("{:?}", node);
-                            rsx! {
-                                StructuredContent { node: node.clone() }
-                            }
-                        }, 
-                        _ => panic!("3"),
+                TermDefinition::Detailed(detailed) => match detailed {
+                    DetailedDefinition::StructuredContent(node) => {
+                        println!("{:?}", node);
+                        rsx! {
+                            StructuredContent { node: node.clone() }
+                        }
                     }
+                    _ => panic!("3"),
                 },
                 _ => panic!("2"),
             }
