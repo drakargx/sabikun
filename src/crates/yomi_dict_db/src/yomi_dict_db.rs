@@ -2,7 +2,6 @@ use std::path::Path;
 use schemas::*;
 use rusqlite::{params, types::ToSqlOutput, Connection, Error, ToSql};
 use std::result::Result;
-use chrono;
 
 pub struct YomitanDatabase {
     connection: Connection,
@@ -12,11 +11,11 @@ struct FormatWrapper(Format);
 
 impl ToSql for FormatWrapper {
     fn to_sql(&self) -> rusqlite::Result<ToSqlOutput<'_>> {
-            match self.0 {
-                Format::V1 => Ok(ToSqlOutput::from(1)),
-                Format::V2 => Ok(ToSqlOutput::from(2)),
-                Format::V3 => Ok(ToSqlOutput::from(3)),
-            }
+        match self.0 {
+            Format::V1 => Ok(ToSqlOutput::from(1)),
+            Format::V2 => Ok(ToSqlOutput::from(2)),
+            Format::V3 => Ok(ToSqlOutput::from(3)),
+        }
     }
 }
 
