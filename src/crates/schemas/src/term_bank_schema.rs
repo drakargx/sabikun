@@ -1021,11 +1021,17 @@ pub struct TermInformation {
     pub term: String,
     pub reading: String,
     pub definition_tags: Option<String>,
-    pub deinflectors: String,
+    pub deinflectors: String, //TODO: deinflectors should technically be a Vec<String>
     pub popularity: i32,
     pub definitions: Vec<TermDefinition>,
     pub sequence_number: i32,
     pub term_tags: String,
+}
+
+impl TermInformation {
+    pub fn definitions_as_json(&self) -> String {
+        serde_json::to_string(&self.definitions).unwrap_or_default()
+    }
 }
 
 #[derive(Serialize, Deserialize)]
