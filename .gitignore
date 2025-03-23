@@ -2,3 +2,4 @@
 /.idea
 src/crates/schemas/target
 Cargo.lock
+src/crates/yomi_dict_db/test.db
